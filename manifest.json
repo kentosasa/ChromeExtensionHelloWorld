@@ -7,8 +7,22 @@
     "default_popup": "popup.html",
     "default_icon": "icon.png"
   },
-  "permissions": [
-    "tabs"
+  "content_scripts": [
+    {
+      "js":[
+        "js/content.js"
+      ],
+      "matches":[
+        "http://*/*",
+        "https://*/*"
+      ]
+    }
+  ],
+ "permissions": [
+    "tabs",
+    "storage",
+    "http://*/*",
+    "https://*/*"
   ],
   "icons": {
     "128": "icon.png"
