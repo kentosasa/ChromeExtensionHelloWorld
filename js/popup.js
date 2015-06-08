@@ -7,7 +7,7 @@ chrome.storage.sync.get('histories', function(items){
   console.log("popup");
   console.log(data);
   for(var i = 0; i < data.length; i++){
-    var history = "<p><a href=\"" + data[i].url +"\" >" + data[i].title + "</a></p>";
+    var history = "<p><a href=\"" + data[i].url +"\" target=\"_blank\">" + data[i].title + "</a></p>";
 
     $("body").append(history);
   }
