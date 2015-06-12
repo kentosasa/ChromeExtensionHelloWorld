@@ -11,7 +11,7 @@ var data = [];
 //var raw = [];
 
 //値の呼び出し
-chrome.storage.sync.get('histories', function(items){
+chrome.storage.local.get('histories', function(items){
   console.log("get data is => ");
   data = data.concat(items.histories);
   console.log(data);
@@ -35,7 +35,7 @@ function dataSet(){
   console.log("this data is =>");
   console.log(data);
 
-  chrome.storage.sync.set({'histories': data}, function(){
+  chrome.storage.local.set({'histories': data}, function(){
     if(chrome.runtime.error){
       console.log("runtime error");
     }else{

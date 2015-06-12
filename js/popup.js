@@ -2,7 +2,7 @@
 var data = [];
 
 //値の呼び出し
-chrome.storage.sync.get('histories', function(items){
+chrome.storage.local.get('histories', function(items){
   data = data.concat(items.histories);
   console.log("popup");
   console.log(data);
