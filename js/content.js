@@ -3,7 +3,8 @@
 // 現在のpage取得
 var page = {
   "title": document.title,
-  "url": document.location.href
+  "url": document.location.href,
+  "date": new Date().getTime()
 };
 
 //空のデータを用意する
@@ -17,13 +18,8 @@ chrome.storage.local.get('histories', function(items){
   console.log(data);
 });
 
-
 // 有効な履歴の場合のみ保存する
 setTimeout("dataSet();", 10000);
-
-
-
-
 
 //
 //メソッド群
@@ -31,17 +27,16 @@ setTimeout("dataSet();", 10000);
 
 //値の保存
 function dataSet(){ 
+  //urlの重複があれば削除して更新
+  for (var i = 0; i < data.length; i++ ){
+    if(data[i].url == page.url) data.splice(i,1);
+  }
   data.unshift(page);
-  console.log("this data is =>");
-  console.log(data);
 
+  //値の保存
   chrome.storage.local.set({'histories': data}, function(){
     if(chrome.runtime.error){
       console.log("runtime error");
-    }else{
-      //Notify that we saved
-    console.log("data saved => ");
-    console.log(data);
     }
   });
 };
