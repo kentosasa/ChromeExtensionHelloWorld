@@ -5,9 +5,10 @@ items.push({name: "hoge", hoge: "hoge"});
 var HistoryList = React.createClass({
   render: function(){
     var historyItems = this.props.items.map(function(item){
+      var date = new Date(item.date);
       return(
           <div className="history">
-          {item.title}
+            <p>{date.getMonth()+1}月{date.getDay()+1}日 <a target="_blank" href={item.url}>{item.title}</a></p>
           </div>
           );
     });
