@@ -2,26 +2,26 @@
 var items = [];
 items.push({name: "hoge", hoge: "hoge"});
 
-var HistoryList = React.createClass({displayName: "HistoryList",
+var HistoryList = React.createClass({
   render: function(){
     var historyItems = this.props.items.map(function(item){
       return(
-          React.createElement("div", {className: "history"}, 
-          item.title
-          )
+          <div className="history">
+          {item.title}
+          </div>
           );
     });
     return (
-        React.createElement("div", {className: "historyList"}, 
-           historyItems 
-        )
+        <div className="historyList">
+          { historyItems } 
+        </div>
         );
   }
 });
 
 
 React.render(
-    React.createElement(HistoryList, {items: items}),
+    <HistoryList items={items}/>,
     document.getElementById('content')
     );
 
@@ -30,7 +30,7 @@ React.render(
 chrome.storage.local.get('histories', function(data){
   items = items.concat(data.histories);
   React.render(
-    React.createElement(HistoryList, {items: items}),
+    <HistoryList items={items}/>,
     document.getElementById('content')
     );
 });     
