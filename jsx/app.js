@@ -22,6 +22,42 @@ var HistoryList = React.createClass({
   }
 });
 
+//Search Classの作成
+var Search = React.createClass({
+    /*
+  getInitialState() {
+    return {
+      textValue: "検索BOX"
+    };
+  },*/
+  //変更されたら呼ぶ関数
+  changeText(e) {
+    //検索結果
+    var result = [];
+    for( var i = 0; i < items.length; i++){
+      if(items[i].title.toLowerCase().includes(e.target.value.toLowerCase())) result.push(items[i]);
+    }
+    //結果の反映
+    React.render(
+        <HistoryList items={result}/>,
+        document.getElementById('content')
+        );
+  },
+  render(){
+    return(
+        <div>
+          <span><b>検索  </b></span>
+          <input type="text" onChange={this.changeText} />
+        </div>
+        );
+  }
+});
+
+React.render(
+    <Search items={items}/>,
+    document.getElementById('search')
+    );
+
 /* HistoryListにitemを渡して、contentの位置に追加する
 React.render(
     <HistoryList items={items}/>,
