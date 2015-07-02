@@ -10,7 +10,7 @@ var HistoryList = React.createClass({displayName: "HistoryList",
       console.log(date.getDay()+1);
       return(
           React.createElement("div", {className: "history"}, 
-            React.createElement("p", null, date.getMonth()+1, "月", date.getDay()+1, "日 ", React.createElement("a", {target: "_blank", href: item.url}, item.title))
+            React.createElement("p", null, date.getMonth()+1, "月", date.getDate(), "日 ", React.createElement("a", {target: "_blank", href: item.url}, item.title))
           )
           );
     });

@@ -10,7 +10,7 @@ var HistoryList = React.createClass({
       console.log(date.getDay()+1);
       return(
           <div className="history">
-            <p>{date.getMonth()+1}月{date.getDay()+1}日 <a target="_blank" href={item.url}>{item.title}</a></p>
+            <p>{date.getMonth()+1}月{date.getDate()}日 <a target="_blank" href={item.url}>{item.title}</a></p>
           </div>
           );
     });
